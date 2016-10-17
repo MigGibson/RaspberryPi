@@ -92,9 +92,9 @@ while continue_reading:
                 #####################
                 #Add participant to register.
                 if registration:
-                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
+                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + cardID)
                 else:
-                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + cardID + "/" + time.strftime("%d/%m/%Y"))
                 #####################
                 #Do something with result:
                 response = f.read()
