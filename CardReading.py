@@ -82,7 +82,7 @@ while continue_reading:
 			opener = urllib.FancyURLopener({})
 			#Get Event ID
 			if count == 0:
-				f = opener.open("http://192.168.0.18:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+				f = opener.open("http://192.168.0.19:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
 				response = f.read()
 				
 				if response != "{\"getEventIDResult\":\"\"}":
@@ -92,9 +92,9 @@ while continue_reading:
 				#####################
 				#Add participant to register.
 				if registration:
-					f = opener.open("http://192.168.0.18:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
+					f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
 				else:
-					f = opener.open("http://192.168.0.18:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+					f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
 				#####################
 				#Do something with result:
 				response = f.read()
@@ -102,7 +102,7 @@ while continue_reading:
 				#####################
 			MIFAREReader.MFRC522_Read(8)
 			MIFAREReader.MFRC522_StopCrypto1()
-		else:
-            print "Authentication error"
+	else:
+		print "Authentication error"
 		
 	
