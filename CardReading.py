@@ -36,73 +36,73 @@ print "Currently in Registration Mode."
 
 # This loop keeps checking for chips. If one is near it will get the UID and authenticate
 while continue_reading:
-	
+    
     # Scan for cards    
     (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-	
+
     # If a card is found
     if status == MIFAREReader.MI_OK:
         print "Card detected"
-	
+    
     # Get the UID of the card
     (status,uid) = MIFAREReader.MFRC522_Anticoll()
-	
+    
     # If we have the UID, continue
     if status == MIFAREReader.MI_OK:
-		
+        
         # Print UID
-		print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])
-		
+        print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])
+        
         # This is the default key for authentication
-		key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
-		
+        key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
+        
         # Select the scanned tag
-		MIFAREReader.MFRC522_SelectTag(uid)
-		
+        MIFAREReader.MFRC522_SelectTag(uid)
+        
         # Authenticate
-		status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
-		
+        status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
+        
         # Check if authenticated
-		if status == MIFAREReader.MI_OK:
-			#Check if the card is the switcher card.
-			#CardID = 86,162,118,203
-			cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3])
-			
-			if cardID == "86,162,118,203":
-				if registration:
-					registration = False
-				else:
-					registration = True
-				
-				if registration:
-					print "Registration mode on!"
-				else:
-					print "Recording mode on!"
-				
-			opener = urllib.FancyURLopener({})
-			#Get Event ID
-			if count == 0:
-				f = opener.open("http://192.168.0.19:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
-				response = f.read()
-				
-				if response != "{\"getEventIDResult\":\"\"}":
-					eventID = response[22:-2]
-					count += 1
-			else:
-				#####################
-				#Add participant to register.
-				if registration:
-					f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
-				else:
-					f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
-				#####################
-				#Do something with result:
-				response = f.read()
-				print response
-				#####################
-			MIFAREReader.MFRC522_Read(8)
-			MIFAREReader.MFRC522_StopCrypto1()
-	else:
-		print "Authentication error"
-		
-	
+        if status == MIFAREReader.MI_OK:
+            #Check if the card is the switcher card.
+            #CardID = 86,162,118,203
+            cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3])
+            
+            if cardID == "86,162,118,203":
+                if registration:
+                    registration = False
+                else:
+                    registration = True
+                
+                if registration:
+                    print "Registration mode on!"
+                else:
+                    print "Recording mode on!"
+                
+            opener = urllib.FancyURLopener({})
+            #Get Event ID
+            if count == 0:
+                f = opener.open("http://192.168.0.19:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+                response = f.read()
+                
+                if response != "{\"getEventIDResult\":\"\"}":
+                    eventID = response[22:-2]
+                    count += 1
+            else:
+                #####################
+                #Add participant to register.
+                if registration:
+                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
+                else:
+                    f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+                #####################
+                #Do something with result:
+                response = f.read()
+                print response
+                #####################
+            MIFAREReader.MFRC522_Read(8)
+            MIFAREReader.MFRC522_StopCrypto1()
+        else:
+            print "Authentication error"
+        
+    
