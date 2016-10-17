@@ -95,14 +95,14 @@ while continue_reading:
 					f = opener.open("http://192.168.0.18:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
 				else:
 					f = opener.open("http://192.168.0.18:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
-				
 				#####################
 				#Do something with result:
 				response = f.read()
 				print response
 				#####################
-				MIFAREReader.MFRC522_Read(8)
-				MIFAREReader.MFRC522_StopCrypto1()
-		else:
+			MIFAREReader.MFRC522_Read(8)
+			MIFAREReader.MFRC522_StopCrypto1()
+	else:
             print "Authentication error"
 		
+	
