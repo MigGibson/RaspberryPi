@@ -69,27 +69,27 @@ while continue_reading:
 			#CardID = 86,162,118,203
 			cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3])
 		
-			if(cardID == "86,162,118,203")
+			if cardID == "86,162,118,203":
 				registration = !registration
 				
-				if(registration)
+				if registration:
 					print "Registration mode on!"
 				else:
 					print "Recording mode on!"
 		
 			opener = urllib.FancyURLopener({})
 			#Get Event ID
-			if(count == 0)
+			if count == 0:
 				f = opener.open("http://192.168.0.18:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
 				response = f.read()
 				
-				if(response != "{\"getEventIDResult\":\"\"}")
+				if response != "{\"getEventIDResult\":\"\"}":
 					eventID = response[22:-2]
 					count += 1
 			else:		
 				#####################
 				#Add participant to register.
-				if(registration)
+				if registration:
 					f = opener.open("http://192.168.0.18:9876/Service1.svc/RegisterParticipant/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
 				else:
 					f = opener.open("http://192.168.0.18:9876/Service1.svc/RecordTime/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
