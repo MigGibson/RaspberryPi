@@ -64,13 +64,11 @@ while continue_reading:
 
         # Check if authenticated
         if status == MIFAREReader.MI_OK:
-		
 			#Check if the card is the switcher card.
 			#CardID = 86,162,118,203
 			cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3])
-		
+			
 			if cardID == "86,162,118,203":
-				
 				if registration:
 					registration = False
 				else:
@@ -80,7 +78,7 @@ while continue_reading:
 					print "Registration mode on!"
 				else:
 					print "Recording mode on!"
-		
+				
 			opener = urllib.FancyURLopener({})
 			#Get Event ID
 			if count == 0:
@@ -103,8 +101,8 @@ while continue_reading:
 				response = f.read()
 				print response
 				#####################
-		
+			
             MIFAREReader.MFRC522_Read(8)
             MIFAREReader.MFRC522_StopCrypto1()
-        else:
+		else:
             print "Authentication error"
