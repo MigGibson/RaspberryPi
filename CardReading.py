@@ -101,8 +101,8 @@ while continue_reading:
 				response = f.read()
 				print response
 				#####################
-            MIFAREReader.MFRC522_Read(8)
-            MIFAREReader.MFRC522_StopCrypto1()
+				MIFAREReader.MFRC522_Read(8)
+				MIFAREReader.MFRC522_StopCrypto1()
 		else:
             print "Authentication error"
 		
