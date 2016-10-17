@@ -70,7 +70,11 @@ while continue_reading:
 			cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3])
 		
 			if cardID == "86,162,118,203":
-				registration = !registration
+				
+				if registration:
+					registration = False
+				else:
+					registration = True
 				
 				if registration:
 					print "Registration mode on!"
