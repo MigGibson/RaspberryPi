@@ -100,7 +100,7 @@ while continue_reading:
                     f = opener.open("http://192.168.0.19:9876/Service1.svc/RegisterParticipant/" + cardID)
                 else:
                     f = opener.open("http://192.168.0.19:9876/Service1.svc/RecordTime/" + cardID + "/" + eventID)
-                    print "http://192.168.0.19:9876/Service1.svc/RecordTime/"
+                    print "http://192.168.0.19:9876/Service1.svc/RecordTime/" + cardID + "/" + eventID
                 #####################
                 #Do something with result:
                 response = f.read()
