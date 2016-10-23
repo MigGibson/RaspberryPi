@@ -53,10 +53,10 @@ while continue_reading:
         # Print UID
         print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])
         
-		opener = urllib.FancyURLopener({})
-		f = opener.open("http://localhost:1728/Service1.svc/NewCardID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
-		response = f.read()
-		
+        opener = urllib.FancyURLopener({})
+        f = opener.open("http://localhost:1728/Service1.svc/NewCardID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
+        response = f.read()
+        
         # This is the default key for authentication
         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
         
