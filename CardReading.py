@@ -91,7 +91,7 @@ while continue_reading:
                 print response
 				
                 if response != "{\"getEventIDResult\":\"\"}":
-                    eventID = response[22:-2]
+                    eventID = response[21:-2]
                     count += 1
             else:
                 #####################
