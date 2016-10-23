@@ -54,7 +54,7 @@ while continue_reading:
         print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])
         
         opener = urllib.FancyURLopener({})
-        f = opener.open("http://192.168.0.19:9876/Service1.svc/NewCardID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
+        f = opener.open("http://192.168.0.28:9876/Service1.svc/NewCardID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]))
         response = f.read()
         
         # This is the default key for authentication
