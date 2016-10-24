@@ -86,7 +86,7 @@ while continue_reading:
             opener = urllib.FancyURLopener({})
             #Get Event ID
             if count == 0:
-                f = opener.open("http://192.168.43.193:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y"))
+                f = opener.open("http://192.168.43.193:9876/Service1.svc/getEventID/" + cardID + "/" + time.strftime("%d/%m/%Y"))
                 response = f.read()
                 print "http://192.168.43.193:9876/Service1.svc/getEventID/" + str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2])+ "," + str(uid[3]) + "/" + time.strftime("%d/%m/%Y")
 				print response
