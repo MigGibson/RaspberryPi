@@ -48,7 +48,7 @@ while continue_reading:
         print "Card read UID: " + str(uid[0]) + "," + str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
         cardID = str(uid[0]) + "," +str(uid[1]) + "," + str(uid[2]) + "," + str(uid[3])
         
-        if(cardID == "37,131,26,78")
+        if(cardID == "37,131,26,78"):
             opener = urllib.FancyURLopener({})
             f = opener.open("http://192.168.43.193:9876/Service1.svc/recordBoxChallengeTime/" + cardID)
             response = f.read()
