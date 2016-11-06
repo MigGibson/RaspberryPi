@@ -26,10 +26,10 @@ signal.signal(signal.SIGINT, end_read)
 MIFAREReader = MFRC522.MFRC522()
 
 # Welcome message
-print "Raffle"
+print "Box Challenge"
 print "Press Ctrl-C to stop."
 print "For visualization purposes we are displaying here."
-print "Currently in Raffle Mode."
+print "Currently in Box Challenge Mode."
 
 # This loop keeps checking for chips. If one is near it will get the UID and authenticate
 while continue_reading:
@@ -54,6 +54,6 @@ while continue_reading:
             response = f.read()
             
         if(response == "0"):
-		    print "You have successfully entered the raffle!"
+		    print "You have successfully entered the Box Challenge!"
         
     
