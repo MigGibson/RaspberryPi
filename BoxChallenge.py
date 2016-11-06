@@ -52,7 +52,8 @@ while continue_reading:
             opener = urllib.FancyURLopener({})
             f = opener.open("http://192.168.43.193:9876/Service1.svc/recordBoxChallengeTime/" + cardID)
             response = f.read()
-            
+            response = response[32:-1]
+            print response
         if(response == "0"):
 		    print "You have successfully entered the Box Challenge!"
         
