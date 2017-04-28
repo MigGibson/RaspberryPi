@@ -9,8 +9,12 @@ houghCircle = HoughCircle('houghImage.jpg')
 #Get the cropped image from the identified circle
 circle = houghCircle.circles[0]
 iris = houghCircle.cimg.crop((circle[0] - circle[2], circle[1] - circle[2], circle[0] + circle[2], circle[1] + circle[2]))
-iris.save("iris.jpg")
 
+#Histogram Equalize the cropped iris.
+cv2.equalizeHist(iris[, iris2])
+iris2.save("iris.jpg")
+
+#Send image to service.
 url = 'http://192.168.43.193:9876/Service1.svc/UploadImage/post'
 files = {'file': open('iris.jpg', 'rb')}
 
